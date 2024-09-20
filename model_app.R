@@ -12,11 +12,9 @@ library(tidyr)
 library(ggdist)
 
 
-# Load your data and model
-# Ensure data loading lines are correct and uncommented when needed
-# load('./cache/multi_df.RData')
-multi_df <- read.csv('~/Documents/Mirror/GitHub/profile_predict_app/multi_df.csv', sep = ',')
-m_balanced <- readRDS('~/Documents/Mirror/GitHub/profile_predict_app/m_balanced.RData')
+# Load data and model
+multi_df <- read.csv('multi_df.csv', sep = ',')
+m_balanced <- readRDS('m_balanced.RData')
 
 # Define the desired order for the income levels and ages
 ordered_income_levels <- c("First 10% group", "Second 10% group", "Third 10% group", "Fourth 10% group",
@@ -117,7 +115,7 @@ server <- function(input, output, session) {
   # Render the radar plot image
   output$radar_image <- renderImage({
     # Return a list with the image path, width, and height
-    list(src = "~/Documents/Mirror/GitHub/profile_predict_app/cluster_radars.png",  # Path to your radar plot image
+    list(src = "cluster_radars.png",  # Path to your radar plot image
          contentType = "image/png",
          width = 900,  # Adjust width
          height = 600,  # Adjust height
