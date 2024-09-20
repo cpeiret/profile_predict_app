@@ -1,16 +1,29 @@
-# Load necessary libraries
+# Install necessary packages if not already installed
+packages <- c("shiny", "dplyr", "ggplot2", "fmsb", "scales", "tibble", 
+              "ggradar", "brms", "marginaleffects", "tidyr", "ggdist")
+
+# Function to check and install missing packages
+install_if_missing <- function(p) {
+  if (!requireNamespace(p, quietly = TRUE)) {
+    install.packages(p, dependencies = TRUE)
+  }
+}
+
+# Apply the function to the package list
+invisible(lapply(packages, install_if_missing))
+
+# Load the necessary libraries
 library(shiny)
 library(dplyr)
 library(ggplot2)
 library(fmsb)
 library(scales)
 library(tibble)
-library(ggradar)  # Ensure you have the ggradar package installed
+library(ggradar)
 library(brms)
 library(marginaleffects)
 library(tidyr)
 library(ggdist)
-
 
 # Load data and model
 multi_df <- read.csv('multi_df.csv', sep = ',')
