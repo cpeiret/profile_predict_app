@@ -1,18 +1,18 @@
-# # Install necessary packages if not already installed
-# packages <- c("shiny", "dplyr", "ggplot2", "fmsb", "scales", "tibble",
-#               "ggradar", "brms", "marginaleffects", "tidyr", "ggdist")
-# 
-# # Function to check and install missing packages
-# install_if_missing <- function(p) {
-#   if (!requireNamespace(p, quietly = TRUE)) {
-#     install.packages(p, dependencies = TRUE)
-#   }
-# }
-# 
-# remotes::install_github("stan-dev/rstantools")
+# Install necessary packages if not already installed
+packages <- c("shiny", "dplyr", "ggplot2", "fmsb", "scales", "tibble",
+              "ggradar", "brms", "marginaleffects", "tidyr", "ggdist")
 
-# # Apply the function to the package list
-# invisible(lapply(packages, install_if_missing))
+# Function to check and install missing packages
+install_if_missing <- function(p) {
+  if (!requireNamespace(p, quietly = TRUE)) {
+    install.packages(p, dependencies = TRUE)
+  }
+}
+
+remotes::install_github("stan-dev/rstantools")
+
+# Apply the function to the package list
+invisible(lapply(packages, install_if_missing))
 
 # Load the necessary libraries
 library(shiny)
